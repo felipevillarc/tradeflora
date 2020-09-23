@@ -1,0 +1,16 @@
+<%= form_for(@area) do |f| %>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  <%= f.label :lat %>
+  <%= f.text_field :lat %>
+  <%= f.label :long %>
+  <%= f.text_field :long %>
+  <select name='basins'>
+    <%@basins.each do |basin|%>
+      <option value= <%:basin %>><%=basin.name%></option>
+    <%end%>
+  </select>
+  <%= f.submit %>
+<% end %>
+
+@
