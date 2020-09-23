@@ -5,6 +5,7 @@ class AreasController < ApplicationController
   end
 
   def show
+    @basins = Basin.all
     @area = Area.find(params[:id])
   end
 

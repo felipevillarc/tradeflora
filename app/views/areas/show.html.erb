@@ -1,5 +1,41 @@
-<%=area.user_id.name%>
-<%=area.description%>
-<%=area.lat%>
-<%=area.log%>
-<%=area.basin%>
+
+<div class="container">
+  <h1><%= "Nova área Disponibilizada por #{@area.user.name}"%></h1>
+  
+  <br>
+
+  
+  
+  <div class="border" id="map" style="height: 300px"></div>
+
+  <br>
+
+
+  <div class="row">
+    <div class="col-sm-12 col-md-6">
+      <h3>Área</h3>
+      <table class="table table-bordered">
+        <tbody>
+          <thead>
+            <th>Description (m²)</th>
+            <th>Basin</th>
+            <th>Action</th>
+          </thead>
+         
+            <tr>
+              <td><%= @area.description %></td>
+              <td><%= @area.basin.name %></td>
+              <td><%= link_to @area, method: :delete, data: { confirm: "Are you sure?" } do %>
+                  <i class="fa fa-trash destroy_area"></i>
+                <% end %>
+              </td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm-12 col-md-6">
+      <%= render "areas/form", user: @user, area: @area %>
+    </div>
+  </div>
+
+</div>
