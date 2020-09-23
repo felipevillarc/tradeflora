@@ -1,5 +1,5 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to "#", class: "navbar-brand" do %>
+  <%= link_to "/", class: "navbar-brand" do %>
     <i class="fas fa-seedling"></i><span> TRADEFLORA</span>
   <% end %>
 
@@ -31,10 +31,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <%= link_to "Entrar", "#", class: "nav-link btn btn-success mx-2 py-1 button-light-shadow" %>
+          <%= link_to "Entrar", "/users/sign_in", class: "nav-link btn btn-success mx-2 py-1 button-light-shadow" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Cadastre-se", "#", class: "nav-link btn btn-warning py-1 button-light-shadow" %>
+          <%= link_to "Cadastre-se", "/users/sign_up", class: "nav-link btn btn-warning py-1 button-light-shadow" %>
         </li>
       </ul>
     </div>
