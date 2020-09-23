@@ -1,16 +1,10 @@
-<%= form_for(@area) do |f| %>
-  <%= f.label :description %>
-  <%= f.text_field :description %>
-  <%= f.label :lat %>
-  <%= f.text_field :lat %>
-  <%= f.label :long %>
-  <%= f.text_field :long %>
-  <select name='basins'>
-    <%@basins.each do |basin|%>
-      <option value= <%:basin %>><%=basin.name%></option>
-    <%end%>
-  </select>
-  <%= f.submit %>
-<% end %>
+<%= simple_form_for (@area) do |f| %>
+  <%= f.input :description %>
 
-@
+  <%= f.input :lat %>
+
+  <%= f.input :long %>
+  
+  <%= f.input :basin_id, collection: @basins %>
+  <%= f.button :submit %>
+<% end %>
