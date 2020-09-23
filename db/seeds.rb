@@ -72,5 +72,26 @@ puts "Seeding Areas table"
   }
   Area.create(attributes)
 end
+areas_ids = []
+Area.all.each do |area|
+  areas_ids << area[:id]
+end
 
 puts "Areas seeded!"
+
+
+puts "Clearing Trades table"
+Trade.destroy_all
+
+puts "Seeding Trades table"
+
+5.times do
+  attributes = {
+    status: ["Opções a definir"].sample,
+    viewed: [true, false].sample,
+    user_id: users_ids.sample,
+    area_id: areas_ids.sample
+  }
+  Trade.create(attributes)
+end
+puts "Trades seeded!"
