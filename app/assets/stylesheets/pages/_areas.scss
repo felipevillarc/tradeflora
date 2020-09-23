@@ -12,19 +12,10 @@
   width: 100%;
 }
 
-#map {
-  height: 100vh;
-  position: sticky;
-  top: 0;
-}
-
 /*Smallest device*/
 @media (min-width: 100px) and (max-width: 575px) {
   .cards {
     grid-template-columns: 1fr;
-  }
-  #map {
-    display: none;
   }
 }
 
@@ -33,9 +24,6 @@
   .cards {
     grid-template-columns: 1fr 1fr;
   }
-  #map {
-    display: none;
-  }
 }
 
 /*Medium devices (tablets, 768px and up)*/
@@ -43,17 +31,11 @@
   .cards {
     grid-template-columns: 1fr 1fr 1fr;
   }
-  #map {
-    display: block;
-  }
 }
 
 @media (min-width: 1200px) {
   .cards {
     grid-template-columns: 1fr 1fr 1fr 1fr;
-  }
-  #map {
-    display: block;
   }
 }
 

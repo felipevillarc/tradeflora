@@ -1,25 +1,27 @@
 
 <h1>Áreas cadastradas</h1>
-
 <div class="main-container">
   <div class="cards">
     <% @areas.each do |area| %>
       <div class="card" style="width: 18rem;">
-        <h5><%= area.description %></h5>
-        <p>Coordenadas:</p>
-          <ul>
-            <li>
-              <%= area.lat %>
-            </li>
-            <li>
-              <%= area.long %>
-            </li>
-          </ul>
-        <p><%= link_to "Conheça mais", area_path(area), class: "btn btn-outline-success" %></p>
+        <div class="container">
+          <h4><%= area.description %></h4>
+          <h5><span>Área de: </span><%= area.user.name %></h5>
+          <p><span>Bacia: </span><%= area.basin.name %></p>
+          <p><i class="fas fa-globe-americas"></i> Coordenadas</p>
+            <ul>
+              <li>
+                Latitude: <%= area.lat.round(6) %>
+              </li>
+              <li>
+                Longitude: <%= area.long.round(6) %>
+              </li>
+            </ul>
+          <div>
+            <p><%= link_to "Tenho interesse", area_path(area), class: "btn btn-success button-light-shadow" %></p>
+          </div>
+        </div>
       </div>
     <% end %>
-  </div>
-  <div id="map">
-    <p>Map comes here</p>
   </div>
 </div>
