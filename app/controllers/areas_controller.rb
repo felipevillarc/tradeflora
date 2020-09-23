@@ -48,14 +48,3 @@ class AreasController < ApplicationController
     params.require(:area).permit(:lat, :long, :description, :basin_id)
   end
 end
-"""
-def create 
-  @area = Area.new(area_params) 
-  @user = current_user 
-  @area.user = @user
-  if @area.save 
-  redirect_to '/'
-  else
-    raise
-  end
-end"""

@@ -36,6 +36,9 @@
     <div class="col-sm-12 col-md-6">
       <%= render "areas/form", user: @user, area: @area %>
     </div>
+     <%= link_to "Estou interessado", new_area_trade_path(@area) %>
   </div>
 
 </div>
+
+<!-- criar o campo de status na área para só deixar disponível para escolha as áreas que não tenham trade em andamento" --Unless @area.status true -->
