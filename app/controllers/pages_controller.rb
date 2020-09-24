@@ -9,6 +9,8 @@ class PagesController < ApplicationController
   def proposals
   	@my_proposals = current_user.proposals
 
+  end
+
   def meu_perfil
     @user = current_user
 
