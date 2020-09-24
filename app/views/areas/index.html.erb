@@ -1,12 +1,12 @@
 
-<h1>Áreas cadastradas</h1>
+<h1 id="paddedheader">Áreas cadastradas</h1>
 <div class="main-container">
   <div class="cards">
     <% @areas.each do |area| %>
-      <div class="card" style="width: 18rem;">
-        <div class="container">
-          <img src="assets/<%=area.basin.name%>.jpg" class="card-img-top">
-          <h4><%= area.description %></h4>
+      <div class="card" style="width: 19rem;">
+        <img src="assets/<%=area.basin.name%>.jpg" class="card-img-top">
+        <div class="card-body">
+          <h4 class="card-title"><%= area.description %></h4>
           <h5><span>Área de: </span><%= area.user.name %></h5>
           <p><span>Bacia: </span><%= area.basin.name %></p>
           <p><i class="fas fa-globe-americas"></i> Coordenadas</p>
@@ -21,7 +21,8 @@
           <div>
             <p><%= link_to "Saiba mais", area_path(area), class: "btn btn-success button-light-shadow" %></p>
           </div>
-        </div>
+          </div>
+
       </div>
     <% end %>
   </div>
