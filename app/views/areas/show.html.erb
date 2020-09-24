@@ -1,10 +1,6 @@
 
 <div class="container">
-  <h1><%= "Nova área Disponibilizada por #{@area.user.name}"%></h1>
-  
   <br>
-
-  
   
   <div class="border" id="map" style="height: 300px"></div>
 
@@ -13,7 +9,7 @@
 
   <div class="row">
     <div class="col-sm-12 col-md-6">
-      <h3>Área</h3>
+      <h3>Área Disponibilizada por <%= @area.user.name %></h3>
       <table class="table table-bordered">
         <tbody>
           <thead>
@@ -25,19 +21,24 @@
             <tr>
               <td><%= @area.description %></td>
               <td><%= @area.basin.name %></td>
-              <td><%= link_to @area, method: :delete, data: { confirm: "Are you sure?" } do %>
+              <td><%= link_to @area, method: :delete, data: { confirm: "Excluir essa área?" } do %>
                   <i class="fa fa-trash destroy_area"></i>
                 <% end %>
+                <%= link_to edit_area_path(@area), data: { confirm: "Editar essa área?" } do %>
+                  <i class="fa fa-edit edit_area"></i>
+                <% end %>
+
               </td>
             </tr>
         </tbody>
       </table>
     </div>
-    <div class="col-sm-12 col-md-6">
-      <%= render "areas/form", user: @user, area: @area %>
-    </div>
-     <%= link_to "Estou interessado", new_area_trade_path(@area) %>
   </div>
+  <br>
+    <%= link_to "Estou interessado", new_area_trade_path(@area), class: "btn btn-success button-light-shadow" %>
+  <br>
+    <p> <%= link_to 'Ver todas as áreas', areas_path %> </p>
+  <br>
 
 </div>
 

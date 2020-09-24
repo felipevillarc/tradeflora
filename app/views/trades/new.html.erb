@@ -1,3 +1,5 @@
+<div class="container">
+
 <h1>realizar trade</h1>
 <%= simple_form_for([@area, @trade], url: area_trades_path(@area)) do |f| %>
 	<%= f.hidden_field :user_id, value: current_user.id %>
@@ -6,4 +8,11 @@
 	<%= f.check_box :viewed, label: "Tenho interesse (mudar para função que agora está no status)"%>
 	<%= f.button :submit, "Registrar", class: "btn btn-success" %>
 <% end %>
-	
+
+<br>
+    <p> <%= link_to 'Ver todas as áreas', areas_path %> </p>
+<br>
+    <p> <%= link_to 'Voltar ao início', root_path %> </p>
+<br>	
+
+</div>

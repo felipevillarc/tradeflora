@@ -5,6 +5,6 @@
 
   <%= f.input :long %>
   
-  <%= f.input :basin_id, collection: @basins %>
+  <%= f.input :basin_id, collection: @basins.name %>
   <%= f.button :submit %>
 <% end %>

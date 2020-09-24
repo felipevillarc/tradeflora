@@ -9,3 +9,5 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :document_number, :phone_number])
   end
 end
+
+#verificar o comando before_action autenticate_user!
