@@ -1,10 +1,10 @@
 <%= simple_form_for (@area) do |f| %>
-  <%= f.input :description %>
+  <%= f.input :description, label: 'Descrição' %>
 
-  <%= f.input :lat %>
+  <%= f.input :lat, label: 'Latitude', hint: 'Exemplo: -23.316392'%>
 
-  <%= f.input :long %>
-  
-  <%= f.input :basin_id, collection: @basins %>
-  <%= f.button :submit %>
+  <%= f.input :long, label: 'Longitude', hint: 'Exemplo: -51.167934' %>
+
+  <%= f.input :basin_id, prompt: "Escolha uma bacia", label: 'Bacia Hidrográfica', collection: @basins %>
+  <%= f.button :submit, "Enviar", class: "btn btn-success button-light-shadow" %>
 <% end %>
