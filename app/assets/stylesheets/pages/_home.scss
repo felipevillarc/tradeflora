@@ -1,5 +1,10 @@
 // Specific CSS for your home-page
-
+body {
+  min-height: 100vh;
+  display:flex; 
+  flex-direction:column; 
+  justify-content: space-between;
+}
 #textshadow {
   font-size: 55px;
   text-shadow: 2px 2px 11px grey;
