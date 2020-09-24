@@ -5,6 +5,7 @@
     <% @areas.each do |area| %>
       <div class="card" style="width: 18rem;">
         <div class="container">
+          <img src="/bacias/Paraguai.jpg" class="card-img-top">
           <h4><%= area.description %></h4>
           <h5><span>Área de: </span><%= area.user.name %></h5>
           <p><span>Bacia: </span><%= area.basin.name %></p>
@@ -18,7 +19,7 @@
               </li>
             </ul>
           <div>
-            <p><%= link_to "Tenho interesse", area_path(area), class: "btn btn-success button-light-shadow" %></p>
+            <p><%= link_to "Saiba mais", area_path(area), class: "btn btn-success button-light-shadow" %></p>
           </div>
         </div>
       </div>
