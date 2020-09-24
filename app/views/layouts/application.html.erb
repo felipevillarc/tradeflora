@@ -13,11 +13,12 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
-  <body>
+  <body class="margintop70">
     <!-- navbar PARTIAL DA NAVBAR _navbar-->
     <%= render 'shared/navbar' %>
-
-      <%= yield %>
+      <div class="container">
+        <%= yield %>
+      </div>
 
     <!-- footer PARTIAL DO FOOTER _footer-->
     <%= render 'shared/footer' %>
