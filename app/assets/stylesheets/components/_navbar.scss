@@ -5,6 +5,8 @@
   position: fixed;
   z-index: 1;
   width: 100%;
+  overflow: hidden;
+  top: 0;
 }
 
 .navbar-lewagon .navbar-collapse {
