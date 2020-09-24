@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :areas do
   	resources :trades, only: [ :new, :create ]
   end
+  get "/meu_perfil", to: "pages#meu_perfil", as: :meu_perfil
 end
