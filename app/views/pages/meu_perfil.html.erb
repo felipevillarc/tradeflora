@@ -41,8 +41,11 @@
       <% end %>
     </div>
     <hr>
-    <div>
+    <div class="d-flex align-items-center justify-content-around">
     <p><%= link_to "Página Principal", root_path, class: "btn btn-success button-light-shadow" %></p>
+    <p><%= link_to "Meus Interesses", my_trades_path, class: "btn btn-success button-light-shadow" %>
+    <p><%= link_to "Propostas Recebidas", my_proposals_path, class: "btn btn-success button-light-shadow" %>
+    <p> <%= link_to 'Ver todas as áreas', areas_path, class: "btn btn-success button-light-shadow" %> </p>
     </div>
   </div>
 </div>
