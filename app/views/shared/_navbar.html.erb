@@ -22,7 +22,7 @@
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "Meu Perfil", "#", class: "dropdown-item" %>
             <%= link_to "Minhas Áreas", "#", class: "dropdown-item" %>
-            <%= link_to "Configurações", "#", class: "dropdown-item" %>
+            <%= link_to "Editar meus dados", edit_user_registration_path, class: "dropdown-item" %>
             <%= link_to "Sair", destroy_user_session_path, method: "delete", class: "dropdown-item" %>
           </div>
         </li>
