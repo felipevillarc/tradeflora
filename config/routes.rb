@@ -8,4 +8,7 @@ Rails.application.routes.draw do
 
   get "my_trades", to: "pages#trades"
   get "my_proposals", to:"pages#proposals"
+
+  get "/meu_perfil", to: "pages#meu_perfil", as: :meu_perfil
+
 end
