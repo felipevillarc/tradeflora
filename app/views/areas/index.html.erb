@@ -1,15 +1,18 @@
-
-<h1 id="paddedheader">Áreas cadastradas</h1>
-<div class="main-container">
+<!-- <br><br><br> -->
+<div class="ml-3">
+  <h1 id="headermargintop">Áreas cadastradas</h1>
+</div>
+<div class="content">
   <div class="cards">
     <% @areas.each do |area| %>
-      <div class="card" style="width: 19rem;">
-        <img src="assets/<%=area.basin.name%>.jpg" class="card-img-top">
-        <div class="card-body">
-          <h4 class="card-title"><%= area.description %></h4>
-          <h5><span>Área de: </span><%= area.user.name %></h5>
-          <p><span>Bacia: </span><%= area.basin.name %></p>
-          <p><i class="fas fa-globe-americas"></i> Coordenadas</p>
+      <div class="card-trip">
+        <img src="assets/<%=area.basin.name%>.jpg">
+        <div class="card-trip-infos">
+          <div>
+            <p class="alignright">Bacia: <%= area.basin.name %></p>
+            <h2><%= area.description %></h2>
+            <p>Área de: <%= area.user.name %></p>
+            <p><i class="fas fa-globe-americas"></i> Coordenadas:</p>
             <ul>
               <li>
                 Latitude: <%= area.lat.round(6) %>
@@ -18,12 +21,27 @@
                 Longitude: <%= area.long.round(6) %>
               </li>
             </ul>
-          <div>
-            <p><%= link_to "Saiba mais", area_path(area), class: "btn btn-success button-light-shadow" %></p>
+            <p><%= link_to "Saiba mais", area_path(area), class: "btn btn-success button-light-shadow" %>
+            </p>
           </div>
-          </div>
-
+        </div>
       </div>
     <% end %>
   </div>
+  <div id="searchbox">
+    <h4>Painel</h4>
+    <%= simple_form_for :search, url: root_path, method: :get do |f| %>
+      <div class="search-form-control form-group">
+        <input class="form-control string required" placeholder="Buscar uma área" type="text" name="search[query]" id="search_query" />
+        <button name="button" type="submit" class="btn btn-success button-light-shadow">
+          <i class="fas fa-search"></i> Busque
+        </button>
+      </div>
+    <% end %>
+    <p><%= link_to "Crie uma área", new_area_path(@area), class: "btn btn-success button-light-shadow" %></p>
+  </div>
 </div>
+
+
+
+
