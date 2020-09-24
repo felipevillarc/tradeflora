@@ -13,3 +13,5 @@ class ApplicationController < ActionController::Base
     meu_perfil_path
 end
 end
+
+#verificar o comando before_action autenticate_user!

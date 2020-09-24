@@ -32,7 +32,12 @@ class AreasController < ApplicationController
   
   def update
     @area = Area.find(params[:id])
-    @area.user = current_user
+    if @area.update!(area_params)
+      redirect_to area_path(@area), notice: 'Área modificada.'
+    else
+      @basins = Basin.all
+      render :edit
+    end
   end
   
   def destroy
