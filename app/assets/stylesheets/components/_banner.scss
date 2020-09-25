@@ -1,10 +1,15 @@
 .banner {
   background-size: cover;
   background-position: center;
+  //height: 350px;
   padding: 150px 0;
   width: 100vw;
   margin-left: calc(50% - 50vw);
   max-height: 50vh;
+  position: relative;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 .banner h1 {
@@ -20,4 +25,8 @@
   color: white;
   opacity: .85;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+.banner a {
+  
+  align-items: center;
 }
