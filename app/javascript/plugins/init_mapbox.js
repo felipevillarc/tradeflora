@@ -21,16 +21,16 @@ const initMapbox = () => {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const attributes = {
       container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v10'
+      style: 'mapbox://styles/mapbox/satellite-v9'
     }
 
     const map = new mapboxgl.Map(attributes);
 
-    //const markers = JSON.parse(mapElement.dataset.markers);
+    const markers = JSON.parse(mapElement.dataset.markers);
 
-    //addMarkersToMap(map, markers)
+    addMarkersToMap(map, markers)
 
-    //fitMapToMarkers(map, markers);
+    fitMapToMarkers(map, markers);
 
   }
 };
