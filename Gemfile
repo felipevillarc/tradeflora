@@ -34,6 +34,9 @@ gem 'faker'
 # For locales
 gem 'rails-i18n'
 
+# PosgreSQL search engine - to search areas
+gem 'pg_search', '~> 2.3.0'
+
 # Le wagon minimal setup - frontend
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'

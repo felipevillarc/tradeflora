@@ -15,19 +15,34 @@
           <thead>
             <th>Descrição (m²)</th>
             <th>Bacia</th>
-            <th>Ação</th>
+
+            <% if user_signed_in? %>
+
+              <% if current_user.id == @area.user.id%>
+
+                <th>Ação</th>
+
+              <%end%>
+            <%end%>
           </thead>
 
             <tr>
               <td><%= @area.description %></td>
               <td><%= @area.basin.name %></td>
-              <td><%= link_to @area, method: :delete, data: { confirm: "Excluir essa área?" } do %>
-                  <i class="fa fa-trash destroy_area"></i>
-                <% end %>
-                <%= link_to edit_area_path(@area), data: { confirm: "Editar essa área?" } do %>
-                  <i class="fa fa-edit edit_area"></i>
-                <% end %>
 
+            <% if user_signed_in? %>
+
+              <%if current_user.id == @area.user.id%>
+
+                <td><%= link_to @area, method: :delete, data: { confirm: "Excluir essa área?" } do %>
+                    <i class="fa fa-trash destroy_area"></i>
+                  <% end %>
+                  <%= link_to edit_area_path(@area), data: { confirm: "Editar essa área?" } do %>
+                    <i class="fa fa-edit edit_area"></i>
+
+                  <% end %>
+              <%end%>
+            <%end%>
               </td>
             </tr>
         </tbody>
@@ -35,9 +50,14 @@
     </div>
   </div>
   <br>
-    <%= link_to "Estou interessado", new_area_trade_path(@area), class: "btn btn-success button-light-shadow" %>
+
+  <% if user_signed_in? %>
+    <% if current_user.id != @area.user.id %>
+      <%= link_to "Estou interessado", new_area_trade_path(@area), class: "btn btn-success button-light-shadow" %>
+    <%end%>
+  <%end%>
   <br>
-    <p> <%= link_to 'Ver todas as áreas', areas_path %> </p>
+    <p> <%= link_to 'Voltar para áreas disponíveis', areas_path %> </p>
   <br>
 
 </div>
