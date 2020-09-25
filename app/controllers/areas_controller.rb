@@ -1,7 +1,11 @@
 class AreasController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   def index
-    @areas = Area.all
+    if params[:query].present?
+      @areas = Area.search_by_area_user_or_basin(params[:query])
+    else
+      @areas = Area.all
+    end
   end
 
   def show
@@ -21,7 +25,7 @@ class AreasController < ApplicationController
   def create
     @area = Area.new(area_params)
     @area.user = current_user
-    
+
     if @area.save!
       redirect_to area_path(@area), notice: 'Nova área criada.'
     else
@@ -29,7 +33,7 @@ class AreasController < ApplicationController
       render :new
     end
   end
-  
+
   def update
     @area = Area.find(params[:id])
     if @area.update!(area_params)
@@ -39,16 +43,16 @@ class AreasController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
     @area = Area.find(params[:id])
     @area.destroy
-    
-    redirect_to @area, notice: 'Área removida.' 
+
+    redirect_to @area, notice: 'Área removida.'
   end
-  
+
   private
-  
+
   def area_params
     params.require(:area).permit(:lat, :long, :description, :basin_id)
   end
