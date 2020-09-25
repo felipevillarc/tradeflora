@@ -3,42 +3,53 @@
   <h1>Áreas cadastradas</h1>
 </div>
 <div class="content">
-  <div class="cards">
-    <% @areas.each do |area| %>
-      <div class="card-trip">
-        <img src="assets/<%=area.basin.name%>.jpg">
-        <div class="card-trip-infos">
-          <div>
-            <p class="alignright">Bacia: <%= area.basin.name %></p>
-            <h2><%= area.description %></h2>
-            <p>Área de: <%= area.user.name %></p>
-            <p><i class="fas fa-globe-americas"></i> Coordenadas:</p>
-            <ul>
-              <li>
-                Latitude: <%= area.lat.round(6) %>
-              </li>
-              <li>
-                Longitude: <%= area.long.round(6) %>
-              </li>
-            </ul>
-            <p><%= link_to "Detalhar", area_path(area), class: "btn btn-success button-light-shadow" %>
-            </p>
+  <% if @areas.empty? %>
+    <div id="paddingleft16">
+      <p>Nenhuma área encontrada com os parâmetros da busca</p>
+    </div>
+  <% else %>
+    <div class="cards">
+        <% @areas.each do |area| %>
+          <div class="card-trip">
+            <img src="assets/<%=area.basin.name%>.jpg">
+            <div class="card-trip-infos">
+              <div>
+                <p class="alignright">Bacia: <%= area.basin.name %></p>
+                <h2><%= area.description %></h2>
+                <p>Área de: <%= area.user.name %></p>
+                <p><i class="fas fa-globe-americas"></i> Coordenadas:</p>
+                <ul>
+                  <li>
+                    Latitude: <%= area.lat.round(6) %>
+                  </li>
+                  <li>
+                    Longitude: <%= area.long.round(6) %>
+                  </li>
+                </ul>
+                <p><%= link_to "Detalhar", area_path(area), class: "btn btn-success button-light-shadow" %>
+                </p>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        <% end %>
     <% end %>
-  </div>
-  <div id="searchbox">
-    <h4>Painel</h4>
-    <%= simple_form_for :search, url: root_path, method: :get do |f| %>
-      <div class="search-form-control form-group">
-        <input class="form-control string required" placeholder="Buscar uma área" type="text" name="search[query]" id="search_query" />
-        <button name="button" type="submit" class="btn btn-success button-light-shadow">
-          <i class="fas fa-search"></i> Busque
-        </button>
-      </div>
-    <% end %>
+    </div>
+    <div id="searchbox">
+      <h4>Painel</h4>
+
+      <%= form_tag areas_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Busca por área"
+        %>
+        <%= submit_tag "Procurar", class: "btn btn-success button-light-shadow mt-2" %>
+      <% end %>
+
+    <hr>
     <p><%= link_to "Crie uma área", new_area_path(@area), class: "btn btn-success button-light-shadow" %></p>
+    <hr>
+    <p><%= link_to "Áreas disponíveis", areas_path, class: "btn btn-success button-light-shadow" %></p>
 
   </div>
 </div>
