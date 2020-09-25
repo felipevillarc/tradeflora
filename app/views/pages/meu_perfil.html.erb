@@ -1,5 +1,5 @@
 
-<div class="container">
+<div class="container text-secondary">
   <div>
     <h1><%=@user.name%></h1>
     <h3>Dados cadastrais:</h3>
@@ -21,14 +21,14 @@
       <div class="card">
         <div class="card-header" id="headingOne">
           <h5 class="mb-0">
-            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+            <button class="btn btn-link text-secondary" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
               <h3>Áreas disponibilizadas</h3>
             </button>
           </h5>
         </div>
 
-        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-          <div class="card-body">            
+        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+          <div class="card-body text-secondary">            
           <% @user.areas.each do |area| %>
             <div class="card-trip">
               <img src="assets/<%=area.basin.name%>.jpg">
@@ -63,7 +63,7 @@
       <div class="card">
         <div class="card-header" id="headingTwo">
           <h5 class="mb-0">
-            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-controls="collapseTwo">
+            <button class="btn btn-link collapsed text-secondary" data-toggle="collapse" data-target="#collapseTwo" aria-controls="collapseTwo">
             <h3>Áreas de Interesse</h3>
             </button>
           </h5>
@@ -72,7 +72,7 @@
         <div class="card-body">
           <div class="row">
             <div class="col-sm-12 col-md-6">
-              <table class="table table-bordered">
+              <table class="table table-bordered text-secondary">
                 <tbody>
                   <thead>
                     <th>Tamanho (m²)</th>
