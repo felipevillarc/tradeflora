@@ -11,6 +11,10 @@ class AreasController < ApplicationController
   def show
     @basins = Basin.all
     @area = Area.find(params[:id])
+    @markers = [{
+        lat: @area.lat.round,
+        lng: @area.long.round
+      }]
   end
 
   def new
