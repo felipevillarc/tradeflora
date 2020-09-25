@@ -1,5 +1,5 @@
 class AreasController < ApplicationController
-
+  skip_before_action :authenticate_user!, only: [:index, :show]
   def index
     @areas = Area.all
   end

@@ -21,7 +21,7 @@
                 Longitude: <%= area.long.round(6) %>
               </li>
             </ul>
-            <p><%= link_to "Detalhar", area_path(area), class: "btn btn-success button-light-shadow" %>
+            <p><%= link_to "Detalhes", area_path(area), class: "btn btn-success button-light-shadow" %>
             </p>
           </div>
         </div>
@@ -38,8 +38,9 @@
         </button>
       </div>
     <% end %>
-    <p><%= link_to "Crie uma área", new_area_path(@area), class: "btn btn-success button-light-shadow" %></p>
-
+    <%if user_signed_in?%>
+      <p><%= link_to "Crie uma área", new_area_path(@area), class: "btn btn-success button-light-shadow" %></p>
+    <%end%>
   </div>
 </div>
 
