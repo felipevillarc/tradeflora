@@ -31,6 +31,9 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # For db seeding
 gem 'faker'
 
+# For locales
+gem 'rails-i18n'
+
 # Le wagon minimal setup - frontend
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
