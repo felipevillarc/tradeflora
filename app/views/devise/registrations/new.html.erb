@@ -4,7 +4,7 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :name, label: "nome",
+    <%= f.input :name, label: "Nome",
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "name" }%>
@@ -12,7 +12,7 @@
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "document-number" }%>
-    <%= f.input :phone_number, label: "telefone",
+    <%= f.input :phone_number, label: "Telefone",
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "phone-number" }%>
@@ -22,7 +22,7 @@
                 input_html: { autocomplete: "email" }%>
     <%= f.input :password, label: "Senha",
                 required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                hint: ("Mínimo de #{@minimum_password_length} caracteres" if @minimum_password_length),
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :password_confirmation, label: "Confirme a senha",
                 required: true,
