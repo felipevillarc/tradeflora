@@ -57,18 +57,20 @@ User.create(name: "Carlos Empresário",
             user_type: "Pessoa jurídica",
             email: "carlos@teste.com",
             password: "123456",
-            document_number:rand(10_000_000_000..99_999_999_999).to_s,
-            phone_number:rand(1..10000).to_s
+            document_number:Faker::IDNumber.brazilian_citizen_number(formatted: true),
+            phone_number: Faker::PhoneNumber.phone_number
             )
 
 10.times do
-  User.create(name: Faker::Name.name,
-              user_type: ["Pessoa física", "Pessoa jurídica"].sample,
-              email: Faker::Internet.email,
-              password: "123456",
-              document_number:rand(10_000_000_000..99_999_999_999).to_s,
-              phone_number:rand(1..10000).to_s
-              )
+  attributes = {name: Faker::Name.name,
+                user_type: ["Pessoa física", "Pessoa jurídica"].sample,
+                password: "123456",
+                document_number:Faker::IDNumber.brazilian_citizen_number(formatted: true),
+                phone_number:Faker::PhoneNumber.phone_number
+                }
+  attributes[:email]="#{attributes[:name].split.last}@teste.com"
+
+  User.create(attributes)
 end
 
 # Variables for support in other seed operations
@@ -114,10 +116,26 @@ puts "Seeding Areas table"
     "Disponibilizo área na Bacia #{basin_seed[:name]}"
   ]
 
+  area_coordinates_faker = [
+    { name:"Amazônica", range_lat:(-9.297093..-0.165376), range_long:(-65.171125..-52.210211) },
+    { name:"Atlântico Leste", range_lat:(-12.904332..-10.925327), range_long:(-39.934120..-38.771828) },
+    { name:"Atlântico Nordeste Oriental", range_lat:(-7.049664..-5.594422), range_long:(-39.119006..-35.858550) },
+    { name:"Atlântico Nordeste Ocidental", range_lat:(-5.654485..-3.630362), range_long:(-45.159619..-43.433360) },
+    { name:"Atlântico Sudeste", range_lat:(-21.537241..-18.205200), range_long:(-43.217002..-41.295759) },
+    { name:"Atlântico Sul", range_lat:(-31.033515..-29.056450), range_long:(-53.250156..-51.883939) },
+    { name:"Paraguai", range_lat:(-18.343451..-11.907992), range_long:(-57.096231..-53.901001) },
+    { name:"Paraná", range_lat:(-24.945905..-21.582357), range_long:(-53.075268..-48.049063) },
+    { name:"Parnaíba", range_lat:(-7.131784..-5.193976), range_long:(-43.213586..-42.593224) },
+    { name:"São Francisco", range_lat:(-12.034531..-9.728735), range_long:(-43.421399..-42.119223) },
+    { name:"Tocantins-Araguaia", range_lat:(-13.271896..-3.246820), range_long:(-50.530603..-46.122949) },
+    { name:"Uruguai", range_lat:(-30.294418..-29.033095), range_long:(-56.032921..-54.474580) },
+  ]
+  area_coordinates_faker.select! {|hash| hash[:name] == basin_seed[:name]}
+
   attributes = {
     description: area_description_faker.sample,
-    lat: Faker::Address.latitude,
-    long:Faker::Address.longitude,
+    lat: rand(area_coordinates_faker.first[:range_lat]),
+    long:rand(area_coordinates_faker.first[:range_long]),
     user_id: user_joao_rural[:id],
     basin_id: basin_seed[:id]
   }
@@ -137,10 +155,26 @@ end
     "Disponibilizo área na Bacia #{basin_seed[:name]}"
   ]
 
+  area_coordinates_faker = [
+    { name:"Amazônica", range_lat:(-9.297093..-0.165376), range_long:(-65.171125..-52.210211) },
+    { name:"Atlântico Leste", range_lat:(-12.904332..-10.925327), range_long:(-39.934120..-38.771828) },
+    { name:"Atlântico Nordeste Oriental", range_lat:(-7.049664..-5.594422), range_long:(-39.119006..-35.858550) },
+    { name:"Atlântico Nordeste Ocidental", range_lat:(-5.654485..-3.630362), range_long:(-45.159619..-43.433360) },
+    { name:"Atlântico Sudeste", range_lat:(-21.537241..-18.205200), range_long:(-43.217002..-41.295759) },
+    { name:"Atlântico Sul", range_lat:(-31.033515..-29.056450), range_long:(-53.250156..-51.883939) },
+    { name:"Paraguai", range_lat:(-18.343451..-11.907992), range_long:(-57.096231..-53.901001) },
+    { name:"Paraná", range_lat:(-24.945905..-21.582357), range_long:(-53.075268..-48.049063) },
+    { name:"Parnaíba", range_lat:(-7.131784..-5.193976), range_long:(-43.213586..-42.593224) },
+    { name:"São Francisco", range_lat:(-12.034531..-9.728735), range_long:(-43.421399..-42.119223) },
+    { name:"Tocantins-Araguaia", range_lat:(-13.271896..-3.246820), range_long:(-50.530603..-46.122949) },
+    { name:"Uruguai", range_lat:(-30.294418..-29.033095), range_long:(-56.032921..-54.474580) },
+  ]
+  area_coordinates_faker.select! {|hash| hash[:name] == basin_seed[:name]}
+
   attributes = {
     description: area_description_faker.sample,
-    lat: Faker::Address.latitude,
-    long:Faker::Address.longitude,
+    lat: rand(area_coordinates_faker.first[:range_lat]),
+    long:rand(area_coordinates_faker.first[:range_long]),
     user_id: users_ids.sample,
     basin_id: basin_seed[:id]
   }
