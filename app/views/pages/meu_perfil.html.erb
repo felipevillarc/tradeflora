@@ -24,7 +24,7 @@
         <div class="card-body">
           <div class="row">
             <div class="col-sm-12 col-md-6">
-             <table class="table table-bordered">
+             <table class="table">
                 <thead>
                   <th>Tamanho (m²)</th>
                   <th>Bacia</th>
@@ -41,6 +41,8 @@
                     <td><%= area.user.name %></td>
                     <td><%= area.user.email %></td>
                     <td><%= area.user.phone_number %></td>
+                    <td style="border-top: none"><%= link_to "Detalhes", area_path(area), class: "btn btn-success button-light-shadow" %></td>
+
                     </tr>
                   <% end %>
                 </tbody>
@@ -89,7 +91,7 @@
       <div class="row">
         <div class="col-sm-12 col-md-6">
           <h3>Propostas Recebidas</h3>
-          <table class="table table-bordered">
+          <table class="table">
             <thead>
               <th>Area</th>
               <th>Bacia</th>
@@ -109,7 +111,7 @@
                 <td><%= user.email %></td>
                 <td><%= user.phone_number %></td>
                 <td><%= area.trade.status %></td>
-                <td><%= link_to area_trade_path(area.id, area.trade.id), method: :delete, data: { confirm: "Recusar proposta?" } do %>
+                <td style="border-top: none"><%= link_to area_trade_path(area.id, area.trade.id), method: :delete, data: { confirm: "Recusar proposta?" } do %>
                     <i class="fa fa-times-circle destroy_trade"></i>
 
                     <%= link_to area_aprove_path(area), method: :patch, data: { confirm: "Aceitar proposta?" } do %>
