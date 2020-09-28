@@ -24,6 +24,8 @@ class AreasController < ApplicationController
 
   def edit
     @area = Area.find(params[:id])
+    @basins = Basin.all
+    #raise
   end
 
   def create
