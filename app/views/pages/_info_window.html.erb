@@ -1,0 +1,15 @@
+<div class="content">
+<div class="cards">
+<div class="card-trip-infos">
+  <p> Bacia: <%= area.basin.name %></p>
+  <h3><%= area.description %></h3>
+  <p>Área de: <%= area.user.name %></p>
+  <p><i class="fas fa-globe-americas"></i> Coordenadas:</p>
+  <ul>
+    <li>Latitude: <%= area.lat.round(6) %></li>
+    <li>Longitude: <%= area.long.round(6) %></li>
+  </ul>
+  <p><%= link_to "Detalhes", area_path(area), class: "btn btn-success button-light-shadow" %></p>
+</div>
+</div>
+</div>
