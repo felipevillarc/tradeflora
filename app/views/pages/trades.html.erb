@@ -12,6 +12,7 @@
             <th>Proprietário</th>
             <th>Email</th>
             <th>Telefone</th>
+            <th>Proposta</th>
           </thead>
          <% @my_trades.each do |trade| %>
          <% area = trade.area %>
@@ -21,6 +22,8 @@
               <td><%= area.user.name %></td>
               <td><%= area.user.email %></td>
               <td><%= area.user.phone_number %></td>
+              <td><%= area.trade.status %></td>
+
             </tr>
           <% end %>
         </tbody>
