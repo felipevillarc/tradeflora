@@ -54,31 +54,36 @@
       <%end%>
     </div>
     <div id="areas-disponibilizadas" class="container tab-pane fade"><br>
-    <%if @user.areas.count > 0%> <!--se tiver areas cadastradas, --> 
-      <% @user.areas.each do |area| %>
-        <div class="card-trip">
-          <img src="assets/<%=area.basin.name%>.jpg">
-          <div class="card-trip-infos">
-            <p class="alignright">Bacia: <%= area.basin.name %></p>
-            <h2><%= area.description %></h2>
-            <p><i class="fas fa-globe-americas"></i> Coordenadas:</p>
-            <ul>
-              <li>
-                Latitude: <%= area.lat.round(6) %>
-              </li>
-              <li>
-                Longitude: <%= area.long.round(6) %>
-              </li>
-            </ul>
-            <p><%= link_to "Detalhes", area_path(area), class: "btn btn-success button-light-shadow" %></p>
-          </div>
+      <div class="content">
+        <div class="cards">
+          <%if @user.areas.count > 0%> <!--se tiver areas cadastradas, -->
+            <% @user.areas.each do |area| %>
+            <div class="card-trip">
+              <img src="assets/<%=area.basin.name%>.jpg">
+              <div class="card-trip-infos">
+                <p class="alignright">Bacia: <%= area.basin.name %></p>
+                <h2><%= area.description %></h2>
+                <p><i class="fas fa-globe-americas"></i> Coordenadas:</p>
+                <ul>
+                  <li>
+                    Latitude: <%= area.lat.round(6) %>
+                  </li>
+                  <li>
+                    Longitude: <%= area.long.round(6) %>
+                  </li>
+                </ul>
+                <p><%= link_to "Detalhes", area_path(area), class: "btn btn-success button-light-shadow" %></p>
+              </div>
+            </div>
+          <% end %>
         </div>
-      <% end %>
+      </div>
     <% else %>
       <h5> Você ainda não disponibilizou nenhuma área </h5>
       <p><%= link_to "Crie uma área", new_area_path(@area), class: "btn btn-success button-light-shadow" %></p>
     <% end %>
     </div>
+
      <div id="minhas-propostas" class="container tab-pane fade"><br>
     <%if @user.proposals.count > 0 %>
       <div class="row">
