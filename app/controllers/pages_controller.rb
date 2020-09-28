@@ -15,4 +15,18 @@ class PagesController < ApplicationController
   def meu_perfil
     @user = current_user
   end
+
+  def maps
+    @basins = Basin.all
+    @areas = Area.all
+
+    @markers = @areas.map do |area|
+      {
+        lat: area.lat,
+        lng: area.long,
+        infoWindow: render_to_string(partial: "info_window", locals: { area: area })
+      }
+
+    end
+  end
 end
