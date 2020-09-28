@@ -51,10 +51,11 @@
 
   <% if user_signed_in? %>
     <% if current_user.id != @area.user.id %>
-      <%= link_to "Estou interessado", new_area_trade_path(@area), class: "btn btn-success button-light-shadow" %>
+      <%= link_to "Estou interessado", new_area_trade_path(@area), class: "btn btn-success button-light-shadow mb-3" %>
     <%end%>
   <%end%>
   <br>
+
   <br>
 
 </div>

@@ -14,6 +14,8 @@ class PagesController < ApplicationController
 
   def meu_perfil
     @user = current_user
+    @trade = Trade.new
+    @area = Area.new
   end
 
   def maps
