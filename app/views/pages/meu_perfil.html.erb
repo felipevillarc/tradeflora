@@ -4,22 +4,53 @@
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
     <li class="nav-item">
-      <a class="nav-link active" data-toggle="tab" href="#areas-de-interesse">áreas de interesse</a>
+      <a class="nav-link active" data-toggle="tab" href="#areas-disponibilizadas">Áreas disponibilizadas</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#areas-disponibilizadas">áreas disponibilizadas</a>
+      <a class="nav-link" data-toggle="tab" href="#areas-de-interesse">Áreas de interesse</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#minhas-propostas">minhas propostas</a>
+      <a class="nav-link" data-toggle="tab" href="#minhas-propostas">Propostas recebidas</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#dados-cadastrais">dados cadastrais</a>
+      <a class="nav-link" data-toggle="tab" href="#dados-cadastrais">Dados cadastrais</a>
     </li>
   </ul>
 
   <!-- Tab panes -->
   <div class="tab-content">
-    <div id="areas-de-interesse" class="container tab-pane active"><br>
+
+
+    <!-- Tab Áreas Disponibilizadas -->
+    <div id="areas-disponibilizadas" class="container tab-pane active"><br>
+      <%if @user.areas.count > 0%> <!--se tiver areas cadastradas, -->
+        <% @user.areas.each do |area| %>
+          <div class="card-trip">
+            <img src="assets/<%=area.basin.name%>.jpg">
+            <div class="card-trip-infos">
+              <p class="alignright">Bacia: <%= area.basin.name %></p>
+              <h2><%= area.description %></h2>
+              <p><i class="fas fa-globe-americas"></i> Coordenadas:</p>
+              <ul>
+                <li>
+                  Latitude: <%= area.lat.round(6) %>
+                </li>
+                <li>
+                  Longitude: <%= area.long.round(6) %>
+                </li>
+              </ul>
+              <p><%= link_to "Detalhes", area_path(area), class: "btn btn-success button-light-shadow" %></p>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <h5> Você ainda não disponibilizou nenhuma área </h5>
+        <p><%= link_to "Crie uma área", new_area_path(@area), class: "btn btn-success button-light-shadow" %></p>
+      <% end %>
+    </div>
+
+    <!-- Tab Áreas de interesse -->
+    <div id="areas-de-interesse" class="container tab-pane fade"><br>
       <%if @user.trades.count > 0%>
         <div class="card-body">
           <div class="row">
@@ -53,77 +84,56 @@
         <%= link_to 'Ver áreas disponíveis', areas_path, class: "btn btn-success button-light-shadow" %>
       <%end%>
     </div>
-    <div id="areas-disponibilizadas" class="container tab-pane fade"><br>
-    <%if @user.areas.count > 0%> <!--se tiver areas cadastradas, --> 
-      <% @user.areas.each do |area| %>
-        <div class="card-trip">
-          <img src="assets/<%=area.basin.name%>.jpg">
-          <div class="card-trip-infos">
-            <p class="alignright">Bacia: <%= area.basin.name %></p>
-            <h2><%= area.description %></h2>
-            <p><i class="fas fa-globe-americas"></i> Coordenadas:</p>
-            <ul>
-              <li>
-                Latitude: <%= area.lat.round(6) %>
-              </li>
-              <li>
-                Longitude: <%= area.long.round(6) %>
-              </li>
-            </ul>
-            <p><%= link_to "Detalhes", area_path(area), class: "btn btn-success button-light-shadow" %></p>
+
+    <!-- Tab Minhas proposostas -->
+    <div id="minhas-propostas" class="container tab-pane fade"><br>
+      <%if @user.proposals.count > 0 %>
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <h3>Áreas de Interesse</h3>
+            <table class="table table-bordered">
+              <thead>
+                <th>Area</th>
+                <th>Bacia</th>
+                <th>Interessado</th>
+                <th>Email</th>
+                <th>Telefone</th>
+              </thead>
+              <tbody>
+                <% @user.proposals.each do |proposal| %>
+                  <% user = proposal.user %>
+                  <% area = proposal.area %>
+                  <tr>
+                  <td><%= area.description %></td>
+                  <td><%= area.basin.name %></td>
+                  <td><%= user.name %></td>
+                  <td><%= user.email %></td>
+                  <td><%= user.phone_number %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
           </div>
         </div>
-      <% end %>
-    <% else %>
-      <h5> Você ainda não disponibilizou nenhuma área </h5>
-      <p><%= link_to "Crie uma área", new_area_path(@area), class: "btn btn-success button-light-shadow" %></p>
-    <% end %>
-    </div>
-     <div id="minhas-propostas" class="container tab-pane fade"><br>
-    <%if @user.proposals.count > 0 %>
-      <div class="row">
-        <div class="col-sm-12 col-md-6">
-          <h3>Áreas de Interesse</h3>
-          <table class="table table-bordered">
-            <thead>
-              <th>Area</th>
-              <th>Bacia</th>
-              <th>Interessado</th>
-              <th>Email</th>
-              <th>Telefone</th>
-            </thead>
-            <tbody>
-              <% @user.proposals.each do |proposal| %>
-                <% user = proposal.user %>
-                <% area = proposal.area %>
-                <tr>
-                <td><%= area.description %></td>
-                <td><%= area.basin.name %></td>
-                <td><%= user.name %></td>
-                <td><%= user.email %></td>
-                <td><%= user.phone_number %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    <% else %>
-      <h5> Você ainda não declarou interesse por nenhuma área </h5>
-    <%end%>
+      <% else %>
+        <h5> Você ainda não declarou interesse por nenhuma área </h5>
+      <%end%>
     </div>
 
-      <div id="dados-cadastrais" class="container tab-pane fade"><br>
-        <h1><%=@user.name%></h1>
-        <hr>
-        <ul>
-          <li>E-mail: <%=@user.email %> </li>
-          <li>Natureza: <%=@user.user_type %></li>
-          <li>Telefone: <%= @user.phone_number %></li>
-          <li>Documento: <%= @user.document_number %></li>
-        </ul>
-        <hr>
-        <%= link_to "Editar dados", edit_user_registration_path %>
-      </div>
+    <!-- Tab Dados cadastrais -->
+    <div id="dados-cadastrais" class="container tab-pane fade"><br>
+      <h1><%=@user.name%></h1>
+      <hr>
+      <ul>
+        <li>E-mail: <%=@user.email %> </li>
+        <li>Natureza: <%=@user.user_type %></li>
+        <li>Telefone: <%= @user.phone_number %></li>
+        <li>Documento: <%= @user.document_number %></li>
+      </ul>
+      <hr>
+      <%= link_to "Editar dados", edit_user_registration_path %>
+    </div>
+
+
   </div>
-</div>
+
