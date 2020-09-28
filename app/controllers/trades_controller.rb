@@ -19,6 +19,14 @@ class TradesController < ApplicationController
   	end
   end
 
+    def destroy
+    @trade = Trade.find(params[:id])
+
+    @trade.destroy
+
+    redirect_to my_proposals_path, notice: 'Proposta recusada.'
+    end
+
   
   
   private

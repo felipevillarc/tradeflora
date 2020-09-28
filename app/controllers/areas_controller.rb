@@ -41,12 +41,13 @@ class AreasController < ApplicationController
   end
 
   def update
-    @area = Area.find(params[:id])
-    if @area.update!(area_params)
-      redirect_to area_path(@area), notice: 'Área modificada.'
-    else
-      @basins = Basin.all
-      render :edit
+      @area = Area.find(params[:id])
+      if @area.update!(area_params)
+        redirect_to area_path(@area), notice: 'Área modificada.'
+      else
+        @basins = Basin.all
+        render :edit
+      end
     end
   end
 
