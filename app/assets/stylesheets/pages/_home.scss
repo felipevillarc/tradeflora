@@ -2,12 +2,114 @@
 body {
   min-height: 90vh;
   margin-top: 10vh;
-  display:flex; 
-  flex-direction:column; 
+  display:flex;
+  flex-direction:column;
   justify-content: space-between;
 }
 #textshadow {
   font-size: 55px;
   text-shadow: 2px 2px 11px grey;
   color: white;
+}
+
+#textshadowbottom {
+  font-size: 40px;
+  text-shadow: 2px 2px 11px grey;
+  color: black;
+}
+
+.bigicon {
+  font-size: 55px;
+}
+
+/********** feature  **********/
+.feature i {
+    width: 100%;
+    max-width: 480px;
+    background-size: cover;
+}
+
+#feature-first {
+    background: linear-gradient(168deg, #F4F4F4 55%, #264653 0);
+    background-size: cover;
+}
+
+#feature-last {
+    background: #264653;
+    background-size: cover;
+}
+
+
+/********** contact **********/
+#contact {
+    background-size: cover;
+    background: #264653;
+}
+
+#contact ul li {
+    padding: 3px 0;
+}
+
+#contact form {
+    color: #ffffff;
+}
+
+#contact form input,
+#contact form textarea {
+    background: transparent;
+    border: 1px solid #F4F4F4;
+    color: #F4F4F4;
+}
+
+// lista da home
+.steps {
+  clear: both;
+  list-style: none;
+  padding-left: 2%;
+}
+.steps li {
+  margin: 2em 0;
+  padding-top: 1em;
+  display: block;
+  position: relative;
+  counter-increment: inst;
+}
+.steps li::before {
+  content: counter(inst);
+
+  background: #264653;
+  color: #fff;
+
+  font-size: 1em;
+  font-weight: 700;
+  font-style: italic;
+  text-shadow: 1px 1px #264653;
+  border-radius: 0 0.675em 0.675em 0;
+  font-size: 1.5em;
+  text-align: center;
+
+  padding-top: 0;
+  padding-left: 2.25%;
+  left: -5%;
+  top: -0.65em;
+  height: 1.35em;
+  width: 1.35em;
+  position: absolute;
+
+  transition: all 0.2s ease-in-out;
+
+  z-index: -1;
+}
+@media (min-width: 33em) {
+  .steps li:before {
+    border-radius: 50%;
+    font-size: 1.5em;
+    height: 1.35em;
+    margin-left: 2.5%;
+    padding-left: 0;
+    padding-top: 0;
+    top: -0.15em;
+    width: 1.35em;
+    z-index: -1;
+  }
 }

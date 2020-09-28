@@ -1,13 +1,100 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url(assets/homeimages/HomeImageLarge.jpg);">
-  <div class="container">
-    <h1 id="textshadow">TradeFlora<sup>beta</sup></h1>
-    <p>Um programa que promove a compensação florestal</p>
-     <%= link_to "Áreas disponíveis", areas_path, class: "btn btn-success button-light-shadow" %>
+    <div class="container">
+      <h1 id="textshadow">TradeFlora<sup>beta</sup></h1>
+      <p>Um programa que promove a compensação florestal</p>
+     <%= link_to "Entre em Contato", "#anchorcontact", class: "btn btn-success button-light-shadow" %>
+    </div>
   </div>
-</div>
-<div style="text-align: justify;">
-<p class="pt-4">
-O programa TRADEFLORA surge como uma estratégia para disseminar a formalização de parcerias entre detentores de áreas que precisam ser recuperadas e interessados em encontrar áreas de plantio pelos mais diversos motivos. Este projeto tem como objetivo inovar e aprimorar a execução da compensação da vegetação nativa desmatada, contribuindo diretamente para o avanço da Agenda 2030 nos seguintes quesitos: 1) conservação da biodiversidade; 2) operacionalização de instrumentos de mitigação das mudanças climáticas, como redução da perda líquida de florestas, pagamentos por serviços ambientais e sequestro de carbono; 3) proteção de mananciais; 4) promoção de maior coerência entre as políticas ambientais e de desenvolvimento econômico; e 5) incentivo a parcerias público-privadas e multissetoriais, em diversas escalas, para viabilizar o crescimento da infraestrutura nacional com menores impactos ambientais. 
-</p>
+  <div style="text-align: justify;">
+
+  <div class="container">
+      <h1 class="text-center font-weight-bold mt-3 mb-3">Como recuperar o meio-ambiente?</h1>
+      <h2 class="text-center my-4" id="textshadowbottom">Com TradeFlora<sup>beta</sup></h2>
+      <div class="row mb-5">
+          <div class="col-md-4 text-center">
+              <i class="fas fa-map-marked-alt bigicon mb-2"></i>
+              <h4>Mapeando Áreas</h4>
+              <p>Disponibilize ou encontre uma área para reflorestamento em todo o Brasil</p>
+          </div>
+          <div class="col-md-4 text-center">
+              <i class="fas fa-handshake bigicon mb-2"></i>
+              <h4>Promovendo o Trade</h4>
+              <p>Encontrou uma área interessante ou alguém disposto a reflorestar? Entre em contato e feche o negócio!</p>
+          </div>
+          <div class="col-md-4 text-center">
+              <i class="fas fa-seedling bigicon mb-2"></i>
+              <h4>Recuperando a Natureza</h4>
+              <p>Ao final todos saem ganhando, quem tem a obrigação legal de compensar e quem tem áreas disponíveis para reflorestar.</p>
+          </div>
+      </div>
+  </div>
+  <hr>
+
+  <h1 class="text-center font-weight-bold mt-3 mb-3">Objetivos do Programa</h1>
+  <p>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O programa TRADEFLORA surge como uma estratégia para disseminar a formalização de parcerias entre detentores de áreas que precisam ser recuperadas e interessados em encontrar áreas de plantio pelos mais diversos motivos. Este projeto tem como objetivo inovar e aprimorar a execução da compensação da vegetação nativa desmatada, contribuindo diretamente para o avanço da Agenda 2030 nos seguintes quesitos:
+  </p>
+  <ol class="steps mb-0">
+    <li>&nbsp;&nbsp;Conservação da biodiversidade</li>
+    <li>&nbsp;&nbsp;Operacionalização de instrumentos de mitigação das mudanças climáticas, como redução da perda líquida de florestas, pagamentos por serviços ambientais e sequestro de carbono</li>
+    <li>&nbsp;&nbsp;Proteção de mananciais</li>
+    <li>&nbsp;&nbsp;Promoção de maior coerência entre as políticas ambientais e de desenvolvimento econômico</li>
+    <li>&nbsp;&nbsp;Incentivo a parcerias público-privadas e multissetoriais, em diversas escalas, para viabilizar o crescimento da infraestrutura nacional com menores impactos ambientais</li>
+  </ol>
+
+  <hr>
+
+  <!-- feature (skew background) -->
+  <div class="jumbotron jumbotron-fluid feature mb-0 pt-0" id="feature-first">
+      <div class="container my-5 mt-0">
+          <div class="row justify-content-between text-center text-md-left">
+              <div class="col-md-6">
+                  <h2 class="font-weight-bold">Saiba Mais</h2>
+                  <p class="my-4">Cadastre-se no programa e tenha acesso integral, ou veja as áreas para reflorestamento já cadastradas no sistema</p>
+                  <%= link_to "Veja Áreas Disponíveis", areas_path, class: "btn btn-success button-light-shadow" %>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- feature (green background) -->
+
+<!-- CAMPO DE CONTATO -->
+  <div class="jumbotron jumbotron-fluid mt-0" id="contact">
+      <div class="container my-5">
+          <div class="row justify-content-between">
+              <div class="col-md-6 text-white">
+                  <h2 class="font-weight-bold">Entre em Contato</h2>
+                  <p class="my-4">
+                      Instituto Brasileiro do Meio Ambiente
+                      <br> e dos Recursos Naturais Renováveis
+                  </p>
+                  <ul class="list-unstyled">
+                      <li>Email : ibama@ibama.gov.br</li>
+                      <li>Phone : (61) 3316-1212</li>
+                      <li>Endereço : SCEN Ibama - Ed. Sede, Brasília - DF, 70818-900</li>
+                  </ul>
+              </div>
+              <div class="col-md-6" id="anchorcontact">
+                  <form>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="name">Seu Nome</label>
+                            <input type="name" class="form-control" id="name">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="Email">Seu E-mail</label>
+                            <input type="email" class="form-control" id="Email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensagem</label>
+                        <textarea class="form-control" id="message" rows="3"></textarea>
+                    </div>
+                      <button type="submit" class="btn btn-success button-light-shadow my-3">Enviar</button>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
 </div>
 
