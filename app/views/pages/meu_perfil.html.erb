@@ -112,6 +112,11 @@
                 <td><%= link_to area_trade_path(area.id, area.trade.id), method: :delete, data: { confirm: "Recusar proposta?" } do %>
                     <i class="fa fa-times-circle destroy_trade"></i>
 
+                    <%= link_to area_aprove_path(area), method: :patch, data: { confirm: "Aceitar proposta?" } do %>
+                    <i class="fa fa-check-circle update_area"></i>
+                  <% end %>
+
+
                   <% end %>
                 </tr>
               <% end %>

@@ -6,6 +6,7 @@ class AreasController < ApplicationController
     else
       @areas = Area.all
     end
+    @areas.where(recovery:nil) 
   end
 
   def show
@@ -47,7 +48,6 @@ class AreasController < ApplicationController
       else
         @basins = Basin.all
         render :edit
-      end
     end
   end
 
@@ -56,6 +56,13 @@ class AreasController < ApplicationController
     @area.destroy
 
     redirect_to @area, notice: 'Área removida.'
+  end
+
+  def aprove
+    @area = Area.find(params[:area_id])
+    @area.update(recovery: true)
+
+    redirect_to @area
   end
 
   private
