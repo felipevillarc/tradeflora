@@ -10,7 +10,7 @@
       <a class="nav-link" data-toggle="tab" href="#areas-disponibilizadas">áreas disponibilizadas</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#minhas-propostas">minhas propostas</a>
+      <a class="nav-link" data-toggle="tab" href="#propostas-recebidas">propostas recebidas</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" data-toggle="tab" href="#dados-cadastrais">dados cadastrais</a>
@@ -23,7 +23,7 @@
       <%if @user.trades.count > 0%>
         <div class="card-body">
           <div class="row">
-            <div class="col-sm-12 col-md-6">
+            <div class="col-sm-12 col-6">
              <table class="table table-bordered">
                 <thead>
                   <th>Tamanho (m²)</th>
@@ -53,7 +53,7 @@
         <%= link_to 'Ver áreas disponíveis', areas_path, class: "btn btn-success button-light-shadow" %>
       <%end%>
     </div>
-    <div id="areas-disponibilizadas" class="container tab-pane fade"><br>
+    <div id="areas-disponibilizadas" class="container tab-pane fade row"><br>
     <%if @user.areas.count > 0%> <!--se tiver areas cadastradas, --> 
       <% @user.areas.each do |area| %>
         <div class="card-trip">
@@ -79,7 +79,7 @@
       <p><%= link_to "Crie uma área", new_area_path(@area), class: "btn btn-success button-light-shadow" %></p>
     <% end %>
     </div>
-     <div id="minhas-propostas" class="container tab-pane fade"><br>
+     <div id="propostas-recebidas" class="container tab-pane fade"><br>
     <%if @user.proposals.count > 0 %>
       <div class="row">
         <div class="col-sm-12 col-md-6">

@@ -6,6 +6,7 @@ class Area < ApplicationRecord
   include PgSearch::Model
   pg_search_scope :search_by_area_user_or_basin,
                   against: [:description],
+                  ignoring: :accents,
                   associated_against: {
                     user: [ :name],
                     basin: [:name]

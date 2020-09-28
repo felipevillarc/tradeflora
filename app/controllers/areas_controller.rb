@@ -1,5 +1,6 @@
 class AreasController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
+  
   def index
     if params[:query].present?
       @areas = Area.search_by_area_user_or_basin(params[:query])
